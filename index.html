@@ -122,6 +122,11 @@ footer{text-align:center;padding:20px;color:#637185;font-size:13px}
 <h2 id="title">Engine Assembly</h2>
 <div id="details" aria-live="polite"></div>
 </div>
+<div class="card">
+<h2>Repair-first approach</h2>
+<p class="info">Diagnose before buying parts. Start with visual checks and simple tests, identify the smallest failed component, then repair or adjust it where appropriate. Replace a complete assembly only when testing or the correct service procedure justifies it.</p>
+<p class="info"><b>Compatibility note:</b> This guide currently assumes a carburetted Thunderbird 350 Twin Spark, possibly around 2017. Confirm the exact year and variant against the registration certificate and the correct Royal Enfield parts catalogue before ordering anything. No unverified OEM part numbers or prices are shown.</p>
+</div>
 </section>
 
 <section id="systems" class="page">
@@ -236,6 +241,38 @@ category:"FINAL DRIVE",
 description:"Transfers engine power through sprockets to the rear wheel.",
 inspect:"With the engine off, look for rust, stiff links and visible damage.",
 connected:"Drive chain, front sprocket, rear sprocket and rear wheel."
+},
+sparkplugs:{
+title:"Twin Spark Plugs",
+category:"IGNITION",
+description:"Two spark plugs are used on the applicable Twin Spark engine to ignite the air-fuel mixture. Confirm the exact plug specification for the bike's year and variant.",
+inspect:"If starting or misfiring problems occur, inspect plug condition and cap connections with the engine switched off and cool. Use the correct service procedure and plug gap.",
+connected:"Ignition coil(s), plug caps, ignition wiring and engine combustion.",
+repairFirst:"Check plug caps and wiring connections first, then inspect each plug. Replace only a confirmed faulty plug with the verified specification; do not replace the ignition assembly by assumption."
+},
+carburetor:{
+title:"Carburettor & Choke",
+category:"FUEL DELIVERY",
+description:"On the carburetted version, the carburettor meters fuel and air. The choke/enrichment control assists cold starting.",
+inspect:"Check for fuel leaks, damaged hoses, stuck choke control or symptoms that change with engine temperature. Do not adjust mixture screws without the correct procedure.",
+connected:"Fuel tap/line, air filter, throttle cable, intake manifold and engine.",
+repairFirst:"Check fuel supply, hose condition, choke movement and air-filter restriction before considering carburettor removal or replacement. Internal cleaning and tuning should follow the correct service manual."
+},
+airfilter:{
+title:"Air Filter",
+category:"AIR INTAKE",
+description:"Filters dust from intake air before it reaches the engine.",
+inspect:"Check service history and inspect according to the correct manual, especially after dusty riding.",
+connected:"Airbox, intake duct, carburettor and engine.",
+repairFirst:"Inspect the filter element and airbox seal first. Clean or replace only as specified for the installed filter type; avoid running the engine with the filter removed."
+},
+battery:{
+title:"Battery",
+category:"ELECTRICAL",
+description:"Supplies electrical energy for starting and supports the motorcycle's electrical system.",
+inspect:"With ignition off, check for secure terminals, corrosion, case damage and signs of leakage. Keep metal tools from bridging the terminals.",
+connected:"Starter relay, starter motor, charging system, fuses and wiring.",
+repairFirst:"Check terminal tightness and corrosion, then test battery condition and charging voltage. A flat battery alone does not prove the battery is faulty; check charging and parasitic drain before replacing parts."
 }
 };
 
