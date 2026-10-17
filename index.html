@@ -153,21 +153,50 @@ footer{text-align:center;padding:20px;color:#637185;font-size:13px}
 <h2>Motorcycle fault finder</h2>
 <p class="info">Choose a symptom to see possible causes and safe next steps. This guide cannot confirm a mechanical diagnosis.</p>
 
-<label for="symptom"><b>What problem are you experiencing?</b></label>
+<label for="symptom"><b>1. What problem are you experiencing?</b></label>
 <select id="symptom">
 <option value="">Choose a symptom</option>
 <option value="start">Motorcycle won't start</option>
 <option value="battery">Battery keeps going flat</option>
 <option value="brake">Weak or unusual brakes</option>
-<option value="noise">Unusual noise</option>
+<option value="noise">Unusual sound / knocking / rattling</option>
 <option value="power">Poor engine performance</option>
 <option value="chain">Chain noise or problems</option>
 <option value="tyre">Tyre problem</option>
-<option value="hot">Engine overheating</option>
+<option value="hot">Engine overheating / unusual heat</option>
+<option value="leak">Oil or fuel leak</option>
+<option value="clutch">Clutch or gear shifting problem</option>
+<option value="electrical">Lights or electrical issue</option>
 </select>
 
-<label for="extra"><b>Additional details (optional)</b></label>
-<textarea id="extra" rows="3" placeholder="When did the problem begin? Any warning signs?"></textarea>
+<label for="location"><b>2. Where does it seem to come from?</b></label>
+<select id="location">
+<option value="">Not sure</option>
+<option>Engine / cylinder head</option>
+<option>Carburettor / fuel tank</option>
+<option>Front wheel / brake / fork</option>
+<option>Rear wheel / brake / chain</option>
+<option>Clutch / gearbox</option>
+<option>Battery / wiring / lights</option>
+<option>Exhaust</option>
+<option>Frame / suspension</option>
+</select>
+
+<label for="when"><b>3. When does it happen?</b></label>
+<select id="when">
+<option value="">Not sure / always</option>
+<option>During cold start</option>
+<option>At idle</option>
+<option>When accelerating</option>
+<option>At a particular speed</option>
+<option>When braking</option>
+<option>When changing gears / using clutch</option>
+<option>After the engine gets hot</option>
+<option>Over bumps</option>
+</select>
+
+<label for="extra"><b>4. Describe the sound or issue (optional)</b></label>
+<textarea id="extra" rows="3" placeholder="Example: metallic ticking from the top of the engine, only when hot. Include recent repairs or modifications if known."></textarea>
 
 <button class="primary" onclick="diagnose()">Investigate problem</button>
 <div id="result" aria-live="polite" style="margin-top:15px"></div>
@@ -344,49 +373,70 @@ document.getElementById("systemtext").textContent=description;
 }
 
 const faults={
-start:["CHECK SAFELY","Possible causes include a weak battery, loose terminals, starter-circuit problems, ignition faults or fuel-delivery issues. Check the owner's manual and arrange inspection if needed."],
-battery:["INSPECT SOON","Possible causes include an ageing battery, poor connections, charging-system trouble or an electrical drain. Have battery and charging performance tested."],
-brake:["STOP RIDING","Worn brake pads or shoes, a fluid leak, air in a hydraulic line or damaged components may be responsible. Do not ride if braking is weak or fails."],
-noise:["ASSESS BEFORE RIDING","Possible causes include loose exhaust hardware, chain problems, worn bearings or engine faults. Stop riding if you hear severe knocking or grinding."],
-power:["INSPECT SOON","Possible causes include air-filter restriction, fuel-delivery problems, ignition faults, low tyre pressure or overdue servicing."],
-chain:["ENGINE OFF","The chain may be dry, damaged, incorrectly adjusted or paired with worn sprockets. Never touch or adjust the chain with the engine running."],
-tyre:["STOP RIDING","A puncture, leaking valve, incorrect pressure or tyre damage may be responsible. Do not ride on a flat or damaged tyre."],
-hot:["STOP IF OVERHEATING","Possible causes include low oil, excessive load or a mechanical fault. Switch off the engine and let it cool. Never touch hot components."]
+start:{level:"CHECK SAFELY",causes:"Possible causes include battery/terminal trouble, starter-circuit faults, ignition faults or fuel delivery issues.",checks:["Confirm the kill switch and ignition are in the correct position.","Check fuel level and look for obvious loose battery terminals with ignition off.","Note whether the starter turns the engine, clicks, or does nothing."],part:"battery",mechanic:"If basic checks do not identify the issue, or wiring/fuel-system testing is needed, arrange a mechanic."},
+battery:{level:"INSPECT SOON",causes:"Possible causes include a weak battery, poor connections, charging-system trouble or an electrical drain.",checks:["Inspect terminals for looseness or corrosion with ignition off.","Have battery condition and charging output tested.","If it goes flat while parked, ask for a parasitic-drain test before buying a battery."],part:"battery",mechanic:"Charging-system and current-drain testing may require a multimeter and mechanic."},
+brake:{level:"STOP RIDING",causes:"Possible causes include worn pads/shoes, a leak, cable/linkage trouble or damaged brake parts.",checks:["Do not ride if braking is weak, inconsistent, leaking or making severe grinding noises.","Look for visible damage or leaks without dismantling the brake.","Have the brake assembly inspected before riding again."],part:"brake",mechanic:"Braking faults are safety-critical. Have a qualified mechanic inspect and repair them before riding."},
+noise:{level:"IDENTIFY THE SOUND BEFORE ORDERING PARTS",causes:"A sound alone cannot confirm a failed part. Loose external hardware, chain issues, valve-train noise, exhaust leaks, bearings or internal engine faults can sound similar.",checks:["Do not put hands or tools near moving or hot parts while the engine is running.","Record when it happens: cold start, idle, acceleration, braking, gear changes or bumps.","Note the apparent location and whether it is ticking, knocking, grinding, rattling or squealing.","Stop the engine and do not ride if the noise is a heavy metallic knock, grinding, sudden worsening or comes with oil-pressure/overheating symptoms."],part:"inspection",mechanic:"A heavy engine knock, grinding, or noise with loss of power, oil leak or overheating needs prompt professional inspection. Do not buy parts based on sound alone."},
+power:{level:"INSPECT SOON",causes:"Possible causes include air-filter restriction, fuel delivery, ignition, clutch slip, tyre pressure or overdue maintenance.",checks:["Record whether the issue happens cold, hot, at idle or under acceleration.","Check tyre pressure and visible air-intake damage.","Note misfiring, smoke, unusual smell or clutch slipping."],part:"air filter",mechanic:"If the engine misfires, loses power significantly, smokes heavily or the clutch slips, arrange a proper diagnosis."},
+chain:{level:"ENGINE OFF",causes:"The chain may be dry, damaged, incorrectly adjusted or paired with worn sprockets.",checks:["Switch off the engine and keep hands away from pinch points.","Look for rust, stiff links, damaged rollers or visibly uneven slack.","Check the correct manual for chain slack specifications; do not guess."],part:"drive chain kit",mechanic:"A damaged chain, damaged sprocket teeth or uncertain adjustment should be inspected before riding."},
+tyre:{level:"STOP RIDING",causes:"A puncture, leaking valve, incorrect pressure or tyre damage may be responsible.",checks:["Do not ride on a flat, bulging, cut or exposed-cord tyre.","Check pressure only when safe and use the specification for this exact variant.","Inspect for obvious punctures without removing embedded objects."],part:"tyre",mechanic:"Tyre damage and wheel issues should be assessed by a tyre professional or mechanic."},
+hot:{level:"STOP IF OVERHEATING",causes:"Possible causes include low oil, prolonged heavy load or a mechanical fault.",checks:["Stop safely and switch the engine off if it is abnormally hot or performance changes.","Let it cool naturally; do not touch hot engine/exhaust parts.","Check oil level only using the correct manual procedure and on a safe, level surface."],part:"inspection",mechanic:"Persistent overheating, oil loss or power loss needs professional inspection before further riding."},
+leak:{level:"STOP IF FUEL IS LEAKING",causes:"Possible sources include fuel hoses/connections, tank/cap area, engine seals, gaskets or drain plugs.",checks:["If petrol is leaking, switch off, avoid sparks/flames and do not start the bike.","For oil seepage, note the location and check the oil level using the manual procedure.","Do not tighten fasteners blindly; incorrect torque can damage threads or seals."],part:"inspection",mechanic:"Fuel leaks need immediate attention. Significant oil leaks or falling oil level require inspection before riding."},
+clutch:{level:"INSPECT BEFORE CONTINUED RIDING",causes:"Possible causes include incorrect clutch cable free play, worn clutch parts, adjustment issues or internal gearbox faults.",checks:["Note whether the clutch slips, drags, feels unusually hard or gears jump out.","Check visible cable condition and adjustment guidance in the correct manual.","Do not dismantle the clutch/gearbox without the right tools and procedure."],part:"clutch cable",mechanic:"Persistent slipping, gear jumping or internal gearbox symptoms need a mechanic."},
+electrical:{level:"CHECK SAFELY",causes:"Possible causes include a blown fuse, poor terminal connection, failed bulb, switch, wiring or charging fault.",checks:["Switch ignition off before inspecting visible connectors or fuses.","Use only the specified fuse rating; never bridge a fuse.","Note which lights or functions fail together."],part:"fuse",mechanic:"Repeated fuse failure, burnt wiring, smoke or overheating electrical parts require immediate inspection."}
 };
 
 function diagnose(){
 const key=document.getElementById("symptom").value;
-const result=document.getElementById("result");
+const location=document.getElementById("location").value;
+const when=document.getElementById("when").value;
 const extra=document.getElementById("extra").value.trim();
-
+const result=document.getElementById("result");
 result.replaceChildren();
-
 if(!key||!faults[key]){
 result.textContent="Please choose a symptom first.";
 return;
 }
-
 const fault=faults[key];
 const warning=document.createElement("div");
 warning.className="warn";
-
 const heading=document.createElement("b");
-heading.textContent=fault[0];
-
+heading.textContent=fault.level;
 const description=document.createElement("p");
-description.textContent=fault[1];
-
+description.textContent=fault.causes;
 warning.append(heading,description);
-
-const notes=document.createElement("p");
-const label=document.createElement("b");
-label.textContent="Your notes: ";
-notes.append(label,document.createTextNode(extra||"No extra details supplied."));
-
+const checksTitle=document.createElement("h3");
+checksTitle.textContent="Safe next checks";
+const list=document.createElement("ol");
+fault.checks.forEach(item=>{const li=document.createElement("li");li.textContent=item;li.style.marginBottom="8px";list.appendChild(li);});
+const summary=document.createElement("p");
+summary.innerHTML="<b>Details recorded:</b> ";
+summary.append(document.createTextNode("Symptom: "+document.getElementById("symptom").selectedOptions[0].text+". "));
+summary.append(document.createTextNode("Location: "+(location||"not sure")+". "));
+summary.append(document.createTextNode("When: "+(when||"not sure")+". "));
+summary.append(document.createTextNode("Notes: "+(extra||"none supplied")+"."));
+const mechanic=document.createElement("p");
+const mechanicLabel=document.createElement("b");
+mechanicLabel.textContent="When to use a mechanic: ";
+mechanic.append(mechanicLabel,document.createTextNode(fault.mechanic));
+const partsTitle=document.createElement("h3");
+partsTitle.textContent="Replacement parts — only after diagnosis";
+const partsText=document.createElement("p");
+partsText.className="info";
+partsText.textContent="These are search shortcuts, not confirmation that a part has failed or that a listing fits your exact motorcycle. Verify model/year, measurements, OEM number and seller details before buying.";
+const query="Royal Enfield Thunderbird 350 Twin Spark "+fault.part;
+const stores=[
+["Search Amazon", "https://www.amazon.in/s?k="+encodeURIComponent(query)],
+["Search Flipkart", "https://www.flipkart.com/search?q="+encodeURIComponent(query)],
+["Search web / local suppliers", "https://www.google.com/search?q="+encodeURIComponent(query+" India")]
+];
+const links=document.createElement("div");
+links.className="buttons";
+stores.forEach(([label,url])=>{const a=document.createElement("a");a.href=url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=label;a.style.display="inline-block";a.style.padding="12px";a.style.borderRadius="8px";a.style.background="#102b4c";a.style.color="white";a.style.textDecoration="none";a.style.margin="4px 6px 4px 0";links.appendChild(a);});
 const disclaimer=document.createElement("p");
-disclaimer.textContent="These are possible causes, not a confirmed diagnosis. Have safety-critical faults inspected by a qualified mechanic.";
-
-result.append(warning,notes,disclaimer);
+disclaimer.className="info";
+disclaimer.textContent="This is a symptom-based starting point, not a confirmed diagnosis. A mechanic is recommended when the listed checks do not isolate the fault, special tools or internal inspection are needed, or any safety-critical system is involved.";
+result.append(warning,checksTitle,list,summary,mechanic,partsTitle,partsText,links,disclaimer);
 }
 
 part("engine");
