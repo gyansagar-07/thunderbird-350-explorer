@@ -1,0 +1,299 @@
+{
+  "project": "Thunderbird 350 Twin Spark Virtual Mechanic",
+  "target_vehicle": {
+    "user_selected_identity": "Standard Royal Enfield Thunderbird 350 Twin Spark, carburetted; user identifies it as 2017",
+    "excluded_variants": [
+      "Thunderbird 350X",
+      "Thunderbird X",
+      "Thunderbird 350 BS6"
+    ],
+    "verification_status": "Year and exact sub-variant still require confirmation against vehicle documents / frame or engine identifiers; do not silently substitute another model",
+    "engine_family_baseline": "346cc air-cooled single-cylinder UCE-family Twin Spark; confirm specifications against the exact applicable service documentation"
+  },
+  "source_policy": {
+    "authoritative_first": [
+      "Royal Enfield owner / service documentation applicable to the exact variant",
+      "Thunderbird Twinspark spare parts catalogue with effective-date / bulletin cross-check",
+      "Manufacturer part lists or authorised dealer confirmation"
+    ],
+    "marketplaces": "Marketplace title alone is not proof of fitment; require OEM part number or dimension / interface evidence and year/variant match.",
+    "uncertainty": "Mark data as verified, provisional, or unverified; never invent part numbers, torque values, adjustment limits, or prices."
+  },
+  "systems": [
+    {
+      "id": "frame_chassis",
+      "label": "Frame and chassis",
+      "subsystems": [
+        "main frame",
+        "steering head",
+        "swingarm",
+        "engine mounts",
+        "stands",
+        "brackets",
+        "fasteners"
+      ]
+    },
+    {
+      "id": "engine_top_end",
+      "label": "Engine top end",
+      "subsystems": [
+        "cylinder head",
+        "head cover",
+        "valve train",
+        "rockers",
+        "valves",
+        "springs",
+        "cam drive",
+        "cylinder",
+        "piston",
+        "rings",
+        "gaskets",
+        "seals",
+        "fasteners"
+      ]
+    },
+    {
+      "id": "engine_bottom_end",
+      "label": "Engine bottom end",
+      "subsystems": [
+        "crankcase halves",
+        "crankshaft",
+        "connecting rod",
+        "main bearings",
+        "oil passages",
+        "oil pump",
+        "sump / strainer components as applicable",
+        "seals",
+        "gaskets",
+        "fasteners"
+      ]
+    },
+    {
+      "id": "twin_spark_ignition",
+      "label": "Twin Spark ignition",
+      "subsystems": [
+        "two spark plugs",
+        "plug caps",
+        "ignition coils / coil arrangement per variant",
+        "HT leads",
+        "ignition pickup / sensor as fitted",
+        "ignition control and wiring"
+      ]
+    },
+    {
+      "id": "fuel_intake",
+      "label": "Fuel and intake",
+      "subsystems": [
+        "fuel tank",
+        "cap",
+        "tap / supply components as fitted",
+        "fuel hose",
+        "carburettor",
+        "choke / enrichment mechanism",
+        "throttle cable",
+        "intake manifold",
+        "airbox",
+        "filter element",
+        "resonator / intake ducts as fitted"
+      ]
+    },
+    {
+      "id": "lubrication",
+      "label": "Lubrication",
+      "subsystems": [
+        "oil pump",
+        "oil galleries",
+        "strainer / filter components as fitted",
+        "oil lines if fitted",
+        "drain plug",
+        "seals",
+        "gaskets"
+      ]
+    },
+    {
+      "id": "clutch_transmission",
+      "label": "Clutch and gearbox",
+      "subsystems": [
+        "clutch lever and cable",
+        "clutch release mechanism",
+        "clutch basket",
+        "friction plates",
+        "steel plates",
+        "springs",
+        "gearbox shafts",
+        "gears",
+        "selector mechanism",
+        "bearings",
+        "seals"
+      ]
+    },
+    {
+      "id": "final_drive",
+      "label": "Final drive",
+      "subsystems": [
+        "front sprocket",
+        "drive chain",
+        "rear sprocket",
+        "chain adjusters",
+        "guards",
+        "fasteners"
+      ]
+    },
+    {
+      "id": "front_brake",
+      "label": "Front brake",
+      "subsystems": [
+        "lever",
+        "master cylinder / cable mechanism according to variant",
+        "hose / cable",
+        "caliper if fitted",
+        "pads or shoes as fitted",
+        "disc or drum as fitted",
+        "mounts",
+        "fasteners"
+      ]
+    },
+    {
+      "id": "rear_brake",
+      "label": "Rear brake",
+      "subsystems": [
+        "pedal",
+        "pivot and return spring",
+        "operating rod / cable / linkage as fitted",
+        "equaliser / adjuster as fitted",
+        "cam / actuator",
+        "shoes and springs or disc components according to exact variant",
+        "drum / rotor",
+        "wheel interface",
+        "fasteners"
+      ]
+    },
+    {
+      "id": "wheels_tyres",
+      "label": "Wheels and tyres",
+      "subsystems": [
+        "front wheel",
+        "rear wheel",
+        "rim",
+        "spokes or wheel construction as fitted",
+        "hubs",
+        "bearings",
+        "axles",
+        "spacers",
+        "valves",
+        "tyres"
+      ]
+    },
+    {
+      "id": "suspension_steering",
+      "label": "Suspension and steering",
+      "subsystems": [
+        "fork legs",
+        "fork internals",
+        "seals",
+        "triple clamps",
+        "steering bearings",
+        "handlebar",
+        "rear shock absorbers",
+        "swingarm bushes",
+        "mounting hardware"
+      ]
+    },
+    {
+      "id": "electrical_start_charge",
+      "label": "Electrical, starting and charging",
+      "subsystems": [
+        "battery",
+        "starter motor",
+        "starter relay",
+        "charging stator / alternator",
+        "regulator rectifier",
+        "fuses",
+        "wiring harness",
+        "switches",
+        "connectors",
+        "lights",
+        "indicators",
+        "horn",
+        "instrument cluster"
+      ]
+    },
+    {
+      "id": "body_controls",
+      "label": "Bodywork and rider controls",
+      "subsystems": [
+        "tank",
+        "seat",
+        "side panels",
+        "mudguards",
+        "headlamp housing",
+        "tail lamp",
+        "mirrors",
+        "grips",
+        "levers",
+        "footrests",
+        "pedals",
+        "cables",
+        "instrument pods",
+        "mounting fasteners"
+      ]
+    },
+    {
+      "id": "exhaust",
+      "label": "Exhaust",
+      "subsystems": [
+        "header pipe",
+        "exhaust gasket",
+        "silencer",
+        "mounts",
+        "heat shields if fitted",
+        "fasteners"
+      ]
+    }
+  ],
+  "component_record_schema": {
+    "id": "stable unique ID",
+    "name": "exact catalogue description when verified",
+    "system_id": "parent system",
+    "part_number": "null until verified against applicable catalogue",
+    "fitment": {
+      "model": "",
+      "year_range": null,
+      "variant": "",
+      "status": "unverified"
+    },
+    "position": "3D scene node / mesh name once asset is mapped",
+    "function": "plain-language explanation",
+    "connections": [],
+    "symptoms": [],
+    "inspection_steps": [],
+    "repair_options": [],
+    "replace_when": [],
+    "safety_level": "normal | caution | stop_riding",
+    "source_refs": [],
+    "confidence": "verified | provisional | unverified"
+  },
+  "diagnostic_rules": [
+    "Treat a user-reported sound or symptom as evidence, not proof of a failed component.",
+    "Ask where / when / operating-condition questions before ranking possible causes.",
+    "For brake failure, fuel leak, tyre damage, severe metallic knocking, or dangerous electrical symptoms, clearly advise stopping use and seeking appropriate help.",
+    "Show tests and observations that discriminate between causes; do not recommend buying a part based on a symptom alone.",
+    "For each recommendation, link the explanation and 3D focus to the same component IDs."
+  ],
+  "3d_requirements": {
+    "asset_format": "glTF 2.0 / GLB preferred",
+    "required_features": [
+      "orbit rotate",
+      "zoom",
+      "pan",
+      "raycast selection",
+      "mesh names mapped to component IDs",
+      "hide/show",
+      "focus camera on component",
+      "exploded view with documented transforms",
+      "mechanism animations where supported"
+    ],
+    "asset_acceptance": "Do not accept a Thunderbird 350X asset as the target motorcycle. Validate tank, seat, bodywork, frame, wheels, brake configuration and engine details against the standard Thunderbird 350 Twin Spark reference before declaring it matched.",
+    "honesty_rule": "A model with exterior-only geometry must not be presented as having complete internal mechanical detail."
+  }
+}
